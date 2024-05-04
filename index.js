@@ -33,5 +33,5 @@ mongoose
     console.log(error);
   });
 
-const port = process.env.PORT || 2299;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`listening on port${port}`));
