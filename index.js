@@ -21,17 +21,12 @@ app.use("/api", registerRouter);
 app.use("/api", loginRouter);
 app.use("/api", getAllBlogs, getBlogById, addBlog, deleteBlog, updateBlog);
 
-mongoose
-  .connect("mongodb://localhost:27017/latestdb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Successful connection to Mongodb");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
-const port = process.env.PORT;
-app.listen(port, () => console.log(`listening on port${port}`));
+
+const DBURL = process.env.DB_URL;
+mongoose.connect(DBURL).then(()=>{
+  console.log("Successful connection to Mongodb");
+}).catch((error)=> console.log(error))
+app.listen(2299, () => {
+  console.log(`Listening on port ${2299}`);
+});
